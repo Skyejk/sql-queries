@@ -45,3 +45,4 @@ SELECT	RECEPTION.DateOfAdmission AS 'Дата приёма',
 		DOCTORS.Patronymic AS 'Отчество', 
 		DOCTORS.Specialization AS 'Специализация'
 		FROM DOCTORS INNER JOIN RECEPTION ON DOCTORS.ID = ID_DOCTORS;
+		
