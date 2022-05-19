@@ -1,3 +1,4 @@
+--for Microsoft SQL DBMS
 CREATE DATABASE Polyclinic;
 
 USE Polyclinic;
