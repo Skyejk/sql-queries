@@ -12,7 +12,7 @@ CREATE TABLE [Human](
 	ID INT IDENTITY(1,1) NOT NULL,
 	Surname VARCHAR(255) NOT NULL,
 	Firstname VARCHAR(255) NOT NULL,
-	Patronymic VARCHAR(255) NULL DEFAULT 'Отсутствует',
+	Patronymic VARCHAR(255) NULL DEFAULT 'ГЋГІГ±ГіГІГ±ГІГўГіГҐГІ',
 	DateOfBirth DATE NOT NULL,
 	PassportSeries VARCHAR(255) NOT NULL,
 	PassportNumber VARCHAR(255) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE [Human](
 	PRIMARY KEY (ID)
 );
 
-INSERT [Human] VALUES ('Иванов','Иван','Иванович','1995-12-20','0759', '569832', 'FilePassportForThisHuman.pdf');
+INSERT [Human] VALUES ('Г€ГўГ Г­Г®Гў','Г€ГўГ Г­','Г€ГўГ Г­Г®ГўГЁГ·','1995-12-20','0759', '569832', 'FilePassportForThisHuman.pdf');
 
 SELECT * FROM [Human];
 
@@ -50,7 +50,7 @@ CREATE TABLE [Division](
 	PRIMARY KEY (ID),
 );
 
-INSERT [Division] VALUES ('Служба безопасности');
+INSERT [Division] VALUES ('Г‘Г«ГіГ¦ГЎГ  ГЎГҐГ§Г®ГЇГ Г±Г­Г®Г±ГІГЁ');
 
 SELECT * FROM [Division];
 
@@ -62,7 +62,7 @@ CREATE TABLE [Department](
 	PRIMARY KEY (ID),
 );
 
-INSERT [Department] VALUES ('Охрана');
+INSERT [Department] VALUES ('ГЋГµГ°Г Г­Г ');
 
 SELECT * FROM [Department];
 
@@ -70,7 +70,7 @@ SELECT * FROM [Department];
 
 CREATE TABLE [Employee](
 	ID INT IDENTITY(1,1) NOT NULL,
-	EmployeeСode INT  NOT NULL,
+	EmployeeГ‘ode INT  NOT NULL,
 	UserID INT NOT NULL,
 	DivisionID INT NULL,
 	DepartmentID INT NULL,
@@ -96,7 +96,7 @@ CREATE TABLE [Visitor](
 	FOREIGN KEY (UserID) REFERENCES [User](ID),
 );
 
-INSERT [Visitor] VALUES ( 1, 'Некая организация','Помечание бла-бла-бла');
+INSERT [Visitor] VALUES ( 1, 'ГЌГҐГЄГ Гї Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГї','ГЏГ®Г¬ГҐГ·Г Г­ГЁГҐ ГЎГ«Г -ГЎГ«Г -ГЎГ«Г ');
 
 SELECT * FROM [Visitor];
 
@@ -108,7 +108,7 @@ CREATE TABLE [VisitPurpose](
 	PRIMARY KEY (ID),
 );
 
-INSERT [VisitPurpose] VALUES ('Поиск работы');
+INSERT [VisitPurpose] VALUES ('ГЏГ®ГЁГ±ГЄ Г°Г ГЎГ®ГІГ»');
 
 SELECT * FROM [VisitPurpose];
 
@@ -150,28 +150,16 @@ CREATE TABLE [Group](
 	PRIMARY KEY (ID),
 );
 
-INSERT [Group] VALUES ('24/04/2023_Производство_Фомичева_9367788_ГР1');
+INSERT [Group] VALUES ('24/04/2023_ГЏГ°Г®ГЁГ§ГўГ®Г¤Г±ГІГўГ®_Г”Г®Г¬ГЁГ·ГҐГўГ _9367788_ГѓГђ1');
 
 SELECT * FROM [Group];
 
 /*	DROP TABLE [Group];		*/
 
-CREATE TABLE [Purpose](
-	ID INT IDENTITY(1,1) NOT NULL,
-	Purpose VARCHAR(255) NOT NULL,
-	PRIMARY KEY (ID),
-);
-
-INSERT [Purpose] VALUES ('24/04/2023_9367788');
-
-SELECT * FROM [Purpose];
-
-/*	DROP TABLE [Purpose];		*/
 
 CREATE TABLE [PersonalVisit](
 	ID INT IDENTITY(1,1) NOT NULL,
 	VisitorID INT NOT NULL,
-	PurposeID INT NOT NULL,
 	InformForThePassID INT NOT NULL,
 	HostPartyID INT NOT NULL,
 	PRIMARY KEY (ID),
@@ -191,7 +179,6 @@ CREATE TABLE [GroupVisit](
 	ID INT IDENTITY(1,1) NOT NULL,
 	VisitorID INT NOT NULL,
 	GroupID INT NOT NULL,
-	PurposeID INT NOT NULL,
 	InformForThePassID INT NOT NULL,
 	HostPartyID INT NOT NULL,
 	PRIMARY KEY (ID),
