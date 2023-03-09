@@ -12,7 +12,7 @@ CREATE TABLE [Human](
 	ID INT IDENTITY(1,1) NOT NULL,
 	Surname VARCHAR(255) NOT NULL,
 	Firstname VARCHAR(255) NOT NULL,
-	Patronymic VARCHAR(255) NULL DEFAULT 'Îòñóòñòâóåò',
+	Patronymic VARCHAR(255) NULL DEFAULT 'He does not have a patronymic',
 	DateOfBirth DATE NOT NULL,
 	PassportSeries VARCHAR(255) NOT NULL,
 	PassportNumber VARCHAR(255) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE [Human](
 	PRIMARY KEY (ID)
 );
 
-INSERT [Human] VALUES ('Èâàíîâ','Èâàí','Èâàíîâè÷','1995-12-20','0759', '569832', 'FilePassportForThisHuman.pdf');
+INSERT [Human] VALUES ('Petrov','Petr','Petrovich','1995-12-20','0759', '569832', 'FilePassportForThisHuman.pdf');
 
 SELECT * FROM [Human];
 
@@ -50,7 +50,7 @@ CREATE TABLE [Division](
 	PRIMARY KEY (ID),
 );
 
-INSERT [Division] VALUES ('Ñëóæáà áåçîïàñíîñòè');
+INSERT [Division] VALUES ('Security Service');
 
 SELECT * FROM [Division];
 
@@ -62,7 +62,7 @@ CREATE TABLE [Department](
 	PRIMARY KEY (ID),
 );
 
-INSERT [Department] VALUES ('Îõðàíà');
+INSERT [Department] VALUES ('Security');
 
 SELECT * FROM [Department];
 
@@ -96,7 +96,7 @@ CREATE TABLE [Visitor](
 	FOREIGN KEY (UserID) REFERENCES [User](ID),
 );
 
-INSERT [Visitor] VALUES ( 1, 'Íåêàÿ îðãàíèçàöèÿ','Ïîìå÷àíèå áëà-áëà-áëà');
+INSERT [Visitor] VALUES ( 1, 'Organization of magnificent forms','Be careful with him');
 
 SELECT * FROM [Visitor];
 
@@ -108,7 +108,7 @@ CREATE TABLE [VisitPurpose](
 	PRIMARY KEY (ID),
 );
 
-INSERT [VisitPurpose] VALUES ('Ïîèñê ðàáîòû');
+INSERT [VisitPurpose] VALUES ('Partnership offer');
 
 SELECT * FROM [VisitPurpose];
 
@@ -150,7 +150,7 @@ CREATE TABLE [Group](
 	PRIMARY KEY (ID),
 );
 
-INSERT [Group] VALUES ('24/04/2023_Ïðîèçâîäñòâî_Ôîìè÷åâà_9367788_ÃÐ1');
+INSERT [Group] VALUES ('24/04/2023_Production_Fomicheva_9367788_Group1');
 
 SELECT * FROM [Group];
 
