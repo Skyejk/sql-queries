@@ -291,6 +291,7 @@ INSERT [EmployeePosition] VALUES ('Administrator');--Администратор
 INSERT [EmployeePosition] VALUES ('Security');--Охранник
 INSERT [EmployeePosition] VALUES ('Maid');--Горничная
 INSERT [EmployeePosition] VALUES ('Manager');--Менеджер
+INSERT [EmployeePosition] VALUES ('Registrar');--Регистратор
 
 SELECT * FROM [EmployeePosition];
 
