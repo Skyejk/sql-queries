@@ -1,6 +1,6 @@
 USE HotelComplex;
 
---I am using MS SQL to create this query
+/*I am using MS SQL to create this query*/
 
 /*
 	Query for cleaning database:
@@ -327,7 +327,7 @@ SELECT * FROM [Education];
 
 CREATE TABLE [Employee](
 ID INT NOT NULL IDENTITY(1,1),
-HumanID INT NOT NULL,
+DetailedInformationAboutThePersonID INT NOT NULL,
 RoleID INT NOT NULL,
 EducationID INT NOT NULL,
 HotelID INT NOT NULL,
@@ -335,7 +335,7 @@ Email NVARCHAR(255) NULL UNIQUE,
 PhoneNumber NVARCHAR(255) NULL UNIQUE,
 SalaryAmount MONEY NOT NULL,
 PRIMARY KEY (ID),
-FOREIGN KEY (HumanID) REFERENCES [Human](ID),
+FOREIGN KEY (DetailedInformationAboutThePersonID) REFERENCES [DetailedInformationAboutThePerson](ID),
 FOREIGN KEY (RoleID) REFERENCES [EmployeePosition](ID),
 FOREIGN KEY (EducationID) REFERENCES [Education](ID),
 FOREIGN KEY (HotelID) REFERENCES [Hotel](ID),
@@ -374,12 +374,12 @@ SELECT * FROM [User];
 
 CREATE TABLE [Client](
 ID INT NOT NULL IDENTITY(1,1),
-HumanID INT NOT NULL,
+DetailedInformationAboutThePersonID INT NOT NULL,
 Blacklist TINYINT NOT NULL, --Изначально планировал сделать тип данных boolean, но решил оставить место для возможностей дальнейшего развития, поставив tinyint
 Survey NVARCHAR(255) NOT NULL,
 DescriptionNotes NVARCHAR(255) NULL,
 PRIMARY KEY (ID),
-FOREIGN KEY (HumanID) REFERENCES [Human](ID)
+FOREIGN KEY (DetailedInformationAboutThePersonID) REFERENCES [DetailedInformationAboutThePerson](ID)
 );
 
 INSERT [Client] VALUES (5, 0,	'Скрывается от мужа', '');
