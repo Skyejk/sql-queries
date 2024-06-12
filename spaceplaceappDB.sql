@@ -6,8 +6,8 @@ CREATE TABLE Gender(
 	PRIMARY KEY (GenderId)
 );
 
-INSERT INTO Gender VALUES ('Male');
-INSERT INTO Gender VALUES ('Famale');
+INSERT INTO Gender (GenderName) VALUES ('Male');
+INSERT INTO Gender (GenderName) VALUES ('Famale');
 
 CREATE TABLE Human(
 	HumanId SERIAL NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE Employee(
 	PRIMARY KEY (EmployeeId)
 );
 
-INSERT INTO Employee VALUES ('Guest');
+INSERT INTO Employee (EmployeeName) VALUES ('Guest');
 
 CREATE TABLE Users(
 	UserId SERIAL NOT NULL,
@@ -36,7 +36,8 @@ CREATE TABLE Users(
 	UserPass varchar(128) NOT NULL,
 	UserMail varchar(256) NULL,
 	UserImage text DEFAULT('guest.png') NULL,
-	PRIMARY KEY (user_id),
+	PRIMARY KEY (UserId),
 	FOREIGN KEY (HumanId) REFERENCES Human (HumanId),
 	FOREIGN KEY (EmployeeId) REFERENCES Employee (EmployeeId)
 );
+
