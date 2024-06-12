@@ -32,12 +32,75 @@ CREATE TABLE Users(
 	UserId SERIAL NOT NULL,
 	HumanId INTEGER NOT NULL,
 	EmployeeId INTEGER DEFAULT(1) NOT NULL,
-	UserName varchar(128) NOT NULL,
-	UserPass varchar(128) NOT NULL,
-	UserMail varchar(256) NULL,
-	UserImage text DEFAULT('guest.png') NULL,
+	UserName VARCHAR(128) NOT NULL,
+	UserPass VARCHAR(128) NOT NULL,
+	UserMail VARCHAR(256) NULL,
+	UserImage TEXT DEFAULT('guest.png') NULL,
 	PRIMARY KEY (UserId),
 	FOREIGN KEY (HumanId) REFERENCES Human (HumanId),
 	FOREIGN KEY (EmployeeId) REFERENCES Employee (EmployeeId)
 );
+
+
+
+CREATE TABLE Decorating(
+	DecoratingId SERIAL NOT NULL,
+	DecoratingName VARCHAR(128) NOT NULL,
+	DecoratingImage TEXT DEFAULT('DecoratingPlug.png') NOT NULL, 
+	DecoratingDescription TEXT NULL,
+	PRIMARY KEY (DecoratingId)
+);
+
+CREATE TABLE Tableware(
+	TablewareId SERIAL NOT NULL,
+	TablewareName VARCHAR(128) NOT NULL,
+	TablewareImage TEXT DEFAULT('TablewarePlug.png') NOT NULL, 
+	TablewareDescription TEXT NULL,
+	PRIMARY KEY (TablewareId)
+);
+
+
+CREATE TABLE Food(
+	FoodId SERIAL NOT NULL,
+	TablewareId INTEGER DEFAULT(1) NOT NULL,
+	DecoratingId INTEGER DEFAULT(1) NOT NULL,
+	FoodName VARCHAR(128) NOT NULL,
+	FoodImage TEXT DEFAULT('TablewarePlug.png') NOT NULL, 
+	FoodDescription TEXT NULL,
+	FoodQuantity SMALLINT NULL,
+	FoodSize SMALLINT NULL,
+	PRIMARY KEY (FoodId),
+	FOREIGN KEY (TablewareId) REFERENCES Tableware (TablewareId),
+	FOREIGN KEY (DecoratingId) REFERENCES Decorating (DecoratingId)
+);
+
+
+CREATE TABLE Ingredient(
+	IngredientId SERIAL NOT NULL,
+	IngredientName VARCHAR(128) NOT NULL,
+	IngredientImage TEXT DEFAULT('IngredientPlug.png') NOT NULL, 
+	IngredientDescription TEXT NULL,
+	PRIMARY KEY (IngredientId)
+);
+
+
+CREATE TABLE IngredientsFoods(
+	IngredientId INTEGER NOT NULL,
+	FoodId INTEGER NOT NULL,
+	PRIMARY KEY (IngredientId, FoodId),
+	FOREIGN KEY (IngredientId) REFERENCES Ingredient (IngredientId),
+	FOREIGN KEY (FoodId) REFERENCES Food (FoodId)
+);
+
+/*
+DROP TABLE Users CASCADE;
+DROP TABLE Human CASCADE;
+DROP TABLE Employee;
+DROP TABLE Gender;
+DROP TABLE IngredientsFoods CASCADE;
+DROP TABLE Food CASCADE;
+DROP TABLE Decorating;
+DROP TABLE Tableware;
+DROP TABLE Ingredient;
+*/
 
