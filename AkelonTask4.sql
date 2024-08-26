@@ -236,6 +236,15 @@ FOREIGN KEY (ProductID) REFERENCES [Product](ID),
 FOREIGN KEY (ClientID) REFERENCES [CurrentClient](ID),
 );
 
+INSERT [Order] VALUES (5, 1, 233, 30, '2023-03-15');
+INSERT [Order] VALUES (5, 1, 234, 50, '17-03-2023');
+INSERT [Order] VALUES (5, 2, 236, 25, '14-05-2023');
+INSERT [Order] VALUES (5, 4, 237, 22, '16-06-2023');
+INSERT [Order] VALUES (5, 3, 235, 38, '20-04-2023');
+INSERT [Order] VALUES (5, 3, 238, 27, '16-06-2023');
+INSERT [Order] VALUES (5, 4, 239, 10, '22-06-2023');
+INSERT [Order] VALUES (5, 4, 237, 14, '23-01-2023');
+
 SELECT * FROM [Order];
 
 /*	DROP TABLE [Order];		*/
