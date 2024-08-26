@@ -24,6 +24,7 @@ INSERT [UserRole] VALUES  ('Client');
 INSERT [UserRole] VALUES  ('Vendor');
 INSERT [UserRole] VALUES  ('Contractor');
 INSERT [UserRole] VALUES  ('Agent');
+INSERT [UserRole] VALUES  ('Warehouseman');
 
 SELECT * FROM [UserRole];
 
@@ -42,12 +43,13 @@ FOREIGN KEY(GenderID) REFERENCES[Gender](ID),
 FOREIGN KEY(UserRoleID) REFERENCES [UserRole](ID)
 );
 
-INSERT [Human] VALUES  ('Ivanov', 'Ivan', 'Ivanovich',			 NULL, 1, 2);
+INSERT [Human] VALUES  ('Ivanov', 'Ivan', 'Ivanovich',			 NULL, 1, 6);
 INSERT [Human] VALUES  ('Mntr', 'Mntr', 'Mntr',					 NULL, 1, 1);
 INSERT [Human] VALUES  ('Voronova', 'Zlata', 'Alekseevna',		 NULL, 2, 2);
 INSERT [Human] VALUES  ('Zhuravlev', 'David', 'Aleksanrovich',	 NULL, 1, 2);
 INSERT [Human] VALUES  ('Muravyeva', 'Zhanna', 'Lyvovna',		 NULL, 2, 2);
 INSERT [Human] VALUES  ('Andreev', 'Kirill', 'Dmitrievich',		 NULL, 1, 2);
+INSERT [Human] VALUES  ('Petrov', 'Petr', 'Petrovich',			 NULL, 1, 6);
 
 SELECT * FROM [Human];
 
@@ -194,7 +196,7 @@ CREATE TABLE [Product](
 ID INT NOT NULL IDENTITY(1,1),
 UnitID INT NOT NULL,
 ProductName VARCHAR(255),
-Price MONEY NOT NULL,
+Price MONEY NULL,
 PRIMARY KEY (ID),
 FOREIGN KEY (UnitID) REFERENCES [Unit](ID)
 );
@@ -218,6 +220,14 @@ INSERT [Product] VALUES (1, 'Чай', 150);
 INSERT [Product] VALUES (1, 'Шоколад', 110);
 INSERT [Product] VALUES (1, 'Печенье', 150);
 INSERT [Product] VALUES (1, 'Вафли', 130);
+INSERT [Product] VALUES (3, 'Чипсы', NULL);
+INSERT [Product] VALUES (3, 'Сухарики', NULL);
+INSERT [Product] VALUES (3, 'Кукурузные палочки', NULL);
+INSERT [Product] VALUES (3, 'Солёные палочки', NULL);
+INSERT [Product] VALUES (1, 'Зефирки', 1000);
+INSERT [Product] VALUES (1, 'Мармеладки', 100);
+INSERT [Product] VALUES (1, 'Рахат лукум', 10);
+INSERT [Product] VALUES (1, 'Лакрица', 350);
 
 
 SELECT * FROM [Product];
@@ -244,7 +254,102 @@ INSERT [Order] VALUES (5, 3, 235, 38, '20-04-2023');
 INSERT [Order] VALUES (5, 3, 238, 27, '16-06-2023');
 INSERT [Order] VALUES (5, 4, 239, 10, '22-06-2023');
 INSERT [Order] VALUES (5, 4, 237, 14, '23-01-2023');
+INSERT [Order] VALUES (20, 2, 241, 25, '14-08-2024');
+INSERT [Order] VALUES (21, 2, 242, 27, '15-08-2024');
+INSERT [Order] VALUES (22, 2, 243, 23, '16-08-2024');
+INSERT [Order] VALUES (23, 2, 244, 25, '16-08-2024');
+INSERT [Order] VALUES (24, 4, 254, 20, '20-08-2024');
+INSERT [Order] VALUES (25, 1, 255, 6, '21-08-2024');
+INSERT [Order] VALUES (26, 3, 256, 14, '22-08-2024');
+INSERT [Order] VALUES (27, 4, 257, 60, '23-08-2024');
 
 SELECT * FROM [Order];
 
 /*	DROP TABLE [Order];		*/
+
+CREATE TABLE [Warehouse](
+ID INT NOT NULL IDENTITY(1,1),
+HumanID INT NOT NULL, /* 1, 7*/
+ProductID INT NOT NULL,
+ProductQuantity INT NULL,
+DeliveryDate DATE NOT NULL,
+PRIMARY KEY(ID),
+FOREIGN KEY(HumanID) REFERENCES [Human](ID),
+FOREIGN KEY(ProductID) REFERENCES [Product](ID),
+);
+
+INSERT [Warehouse] VALUES (1, 1, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 2, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 3, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 4, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 5, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 6, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 7, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 8, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 9, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 10, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 11, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 12, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 13, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 14, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 15, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 16, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 17, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 18, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 19, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 20, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 21, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 22, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 23, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 24, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 25, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 26, 1000, '2022-01-12');
+INSERT [Warehouse] VALUES (7, 27, 1000, '2022-01-12');
+
+SELECT * FROM [Warehouse];
+
+/*	DROP TABLE [Warehouse];		*/
+
+/* Drop all database:
+
+	DROP TABLE [Warehouse];
+	DROP TABLE [ORDER];
+	DROP TABLE [Product];
+	DROP TABLE [Unit];
+	DROP TABLE [CurrentClient];
+	DROP TABLE [RemainingAddress];
+	DROP TABLE [City];
+	DROP TABLE [Region];
+	DROP TABLE [Country];
+	DROP TABLE [Organization];
+	DROP TABLE [Human];
+	DROP TABLE [UserRole];
+	DROP TABLE [Gender];
+	
+*/
+
+
+/*Первый запрос*/
+
+SELECT * FROM [Product]
+JOIN [Order] ON [Product].ID = [Order].ProductID
+WHERE [Product].Price IS NULL;
+
+/*Второй запрос*/
+
+UPDATE [Product]
+SET Price = Price * 1.05
+WHERE ID IN (
+	SELECT DISTINCT ID FROM [Order]
+	WHERE DatePlacement >= DATEADD(MONTH, -1, GETDATE()
+	)
+);
+
+/*Третий запрос*/
+
+ALTER TABLE [Order]
+ADD [Наименование] VARCHAR(255);
+
+UPDATE [Order]
+SET [Наименование] = 'Заявка № ' + CAST([Order].OrderNumber AS VARCHAR) + ' на приобретение ' + [Product].ProductName
+FROM [Order] JOIN [Product] ON [Order].ProductID = [Product].ID;
